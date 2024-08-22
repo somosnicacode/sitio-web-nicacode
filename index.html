@@ -295,8 +295,6 @@
         >Comenzar
       </a>
 
-      
-
       <!--Este es un contenedor para la animacion de la ola en la primera seccion-->
 
       <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
@@ -1049,7 +1047,7 @@
       class="u-clearfix u-uploaded-video u-video u-section-6"
       id="sec-99f4"
     >
-      <div class="u-background-video u-expanded" >
+      <div class="u-background-video u-expanded">
         <div class="embed-responsive">
           <video
             class="embed-responsive-item"
@@ -1484,13 +1482,6 @@
               >Servicios</a
             >
           </li>
-          <!-- <li>
-            <a
-              href="./#sec-d687"
-              class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-hover-palette-1-base u-text-palette-3-base u-btn-4"
-              >Equipo</a
-            >
-          </li> -->
           <li>
             <a
               href="./#sec-1420"
@@ -1498,6 +1489,7 @@
               >Contacto</a
             >
           </li>
+          <li style="visibility: hidden;">&nbsp;</li>
         </ul>
         <p class="u-small-text u-text u-text-variant u-text-5">
           Nicacode no se hace responsable por el uso indebido de su software ni
@@ -1548,7 +1540,6 @@
                 class="u-svg-link"
                 preserveAspectRatio="xMidYMin slice"
                 viewBox="0 0 112 112"
-                
               >
                 <use xlink:href="#svg-66b2"></use></svg
               ><svg
@@ -1587,7 +1578,6 @@ c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"
                 class="u-svg-link"
                 preserveAspectRatio="xMidYMin slice"
                 viewBox="0 0 112 112"
-               
               >
                 <use xlink:href="#svg-4dbf"></use></svg
               ><svg
@@ -1620,13 +1610,11 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"
     </section>
     <section class="u-clearfix u-section-11" id="sec-2fd1">
       <div class="u-clearfix u-sheet u-sheet-1">
-       <p
-  class="u-align-center u-large-text u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-variant u-text-1"
->
-  © 2024 Nicacode. Todos los derechos reservados
-</p>
-
-
+        <p
+          class="u-align-center u-large-text u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-variant u-text-1"
+        >
+          © 2024 Nicacode. Todos los derechos reservados
+        </p>
       </div>
     </section>
 
@@ -1643,12 +1631,10 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"
 
     <!--Este es el div de la animacion de carga-->
 
-  
     <div id="preloader">
-        <div class="loader"></div>
-        <div class="loading-text">Cargando...</div>
+      <div class="loader"></div>
+      <div class="loading-text">Cargando...</div>
     </div>
-
 
     <!--Aqui finaliza la animacion de carga-->
 
@@ -1681,15 +1667,14 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(window).on("load", function () {
-          setTimeout(function() {
-              $("#preloader").addClass("hidden"); // Añadir clase para deslizar hacia arriba
-              setTimeout(function() {
-                  $("#preloader").remove(); // Eliminar el preloader del DOM
-                  $("body").removeClass("loading"); // Restaura el scroll
-              }, 1000); // Esperar a que termine la animación
-          }, 2000); // 2000 milisegundos = 2 segundos
+        setTimeout(function () {
+          $("#preloader").addClass("hidden"); // Añadir clase para deslizar hacia arriba
+          setTimeout(function () {
+            $("#preloader").remove(); // Eliminar el preloader del DOM
+            $("body").removeClass("loading"); // Restaura el scroll
+          }, 1000); // Esperar a que termine la animación
+        }, 2000); // 2000 milisegundos = 2 segundos
       });
-  </script>
-
+    </script>
   </body>
 </html>
