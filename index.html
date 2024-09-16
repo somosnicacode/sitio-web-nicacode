@@ -1332,18 +1332,25 @@
             </style>
             <div class="wrapper">
               <div class="form-container">
-                <form id="myForm" action="/api/send-email" method="POST">
+                <form id="FormularioDeContacto">
                   <div class="input-container">
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       placeholder=" "
                       required=""
                     />
                     <label for="email">Correo Electrónico</label>
                   </div>
                   <div class="input-container">
-                    <input type="tel" id="tel" placeholder=" " required="" />
+                    <input
+                      type="tel"
+                      id="tel"
+                      name="tel"
+                      placeholder=" "
+                      required=""
+                    />
                     <label for="tel">Número de teléfono</label>
                   </div>
                   <button type="submit">Enviar</button>
@@ -1353,28 +1360,49 @@
             </div>
             <script>
               document
-                .getElementById("myForm")
+                .getElementById("FormularioDeContacto")
                 .addEventListener("submit", function (event) {
-                  event.preventDefault(); // Evitar el envío real del formulario
                   const notification = document.getElementById("notification");
-                  // Simulación de envío exitoso o fallido
-                  const success = Math.random() > 0.5; // 50% de probabilidad de éxito
-                  if (success) {
-                    notification.textContent = "Envío exitoso";
-                    notification.classList.add("success");
-                    notification.classList.remove("error");
-                  } else {
-                    notification.textContent = "Envío fallido";
-                    notification.classList.add("error");
-                    notification.classList.remove("success");
-                  }
-                  notification.style.display = "block";
-                  setTimeout(() => {
-                    notification.style.display = "none";
-                    if (success) {
-                      document.getElementById("myForm").reset(); // Borrar el formulario
-                    }
-                  }, 3000); // Ocultar después de 3 segundos
+                  event.preventDefault(); // Prevenir que el formulario recargue la página
+
+                  // Obtener datos del formulario
+                  const formData = new FormData(
+                    document.getElementById("FormularioDeContacto")
+                  );
+                  const data = Object.fromEntries(formData);
+
+                  // Enviar los datos al backend (a tu endpoint /api/send-email)
+                  fetch("http://localhost:3000/api/send-email", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                  })
+                    .then((response) => {
+                      if (response.ok) {
+                        // Si la respuesta es exitosa
+                        notification.textContent = "Envío exitoso";
+                        notification.classList.add("success");
+                        notification.classList.remove("error");
+                        document.getElementById("FormularioDeContacto").reset(); // Borrar el formulario
+                      } else {
+                        throw new Error("Envío fallido");
+                      }
+                    })
+                    .catch((error) => {
+                      // Si ocurre un error
+                      notification.textContent = "Envío fallido";
+                      notification.classList.add("error");
+                      notification.classList.remove("success");
+                    })
+                    .finally(() => {
+                      notification.style.display = "block";
+                      // Ocultar la notificación después de 3 segundos
+                      setTimeout(() => {
+                        notification.style.display = "none";
+                      }, 3000);
+                    });
                 });
             </script>
           </div>
