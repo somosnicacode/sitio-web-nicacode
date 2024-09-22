@@ -1372,13 +1372,16 @@
                   const data = Object.fromEntries(formData);
 
                   // Enviar los datos al backend (a tu endpoint /api/send-email)
-                  fetch("http://localhost:3000/api/send-email", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                  })
+                  fetch(
+                    "https://back-nicacode.netlify.app/.netlify/functions/sendmail",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(data),
+                    }
+                  )
                     .then((response) => {
                       if (response.ok) {
                         // Si la respuesta es exitosa
